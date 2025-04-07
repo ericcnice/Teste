@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulário de Teste</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="text-center py-8 bg-white shadow">
+    <img src="https://via.placeholder.com/100x100.png?text=Logo" alt="Logo" class="mx-auto mb-4 rounded-full shadow-md">
+    <h1 class="text-3xl font-bold">Participe da nossa pesquisa</h1>
+    <p class="mt-2 text-gray-600">Preencha o formulário abaixo. Leva menos de 2 minutos.</p>
+  </header>
+
+  <!-- Main Form Container -->
+  <main class="flex-grow flex items-center justify-center px-4 py-10">
+    <div class="w-full max-w-4xl bg-white shadow-lg rounded-xl p-6 md:p-10">
+      <div 
+        data-respondi-container="" 
+        data-respondi-mode="regular" 
+        data-respondi-src="https://form.respondi.app/kg2TC2EB" 
+        data-respondi-width="100%" 
+        data-respondi-height="600px">
+      </div>
+      <script>
+        const bodyScript = document.querySelector('body'),
+              hasScript = document.querySelector('#respondi_src');
+        if (!hasScript) {
+          const script = document.createElement('script');
+          script.setAttribute("async", "");
+          script.id = 'respondi_src';
+          script.src = 'https://embed.respondi.app/embed.js';
+          document.body.appendChild(script);
+        }
+      </script>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500 py-6">
+    © 2025 - Criado por Você. Todos os direitos reservados.
+  </footer>
+
+</body>
+</html>
