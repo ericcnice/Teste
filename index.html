@@ -340,5 +340,13 @@ function enviarParaMake() {
   .catch(err => alert('Erro ao enviar formulário. Verifique e tente novamente.'));
 }
 </script>
-</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const nomeInput = document.querySelector('input[placeholder="Nome completo"]');
+    const cpfInput = document.querySelector('input[placeholder="CPF"]');
+    const cepInput = document.querySelector('input[placeholder="CEP"]');
+    const emailInput = document.querySelector('input[type="email"]');
+
+    // Capitalizar nome próprio
+    i
 </html>
