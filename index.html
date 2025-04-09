@@ -1,8 +1,344 @@
-<iframe 
-  src="https://90923330-43d7-42d0-8953-fd5ef8bd547c-00-pssdu2qgkwsb.janeway.replit.dev/" 
-  title="Formulário de Admissão Constanzo" 
-  width="100%" 
-  height="700px" 
-  style="border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" 
-  allowfullscreen
-></iframe>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Admissão - Constanzo</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-md">
+
+    <!-- Régua de progresso -->
+    <div class="w-full flex justify-between items-center mb-8">
+      <div class="flex w-full gap-2">
+        <div class="flex-1 h-2 bg-blue-500 rounded-full cursor-pointer transition-opacity hover:opacity-80" onclick="irParaEtapa(1)"></div>
+        <div class="flex-1 h-2 bg-blue-500 rounded-full cursor-pointer transition-opacity hover:opacity-80" onclick="irParaEtapa(2)"></div>
+        <div class="flex-1 h-2 bg-blue-500 rounded-full cursor-pointer transition-opacity hover:opacity-80" onclick="irParaEtapa(3)"></div>
+        <div class="flex-1 h-2 bg-blue-500 rounded-full cursor-pointer transition-opacity hover:opacity-80" onclick="irParaEtapa(4)"></div>
+        <div class="flex-1 h-2 bg-blue-500 rounded-full cursor-pointer transition-opacity hover:opacity-80" onclick="irParaEtapa(5)"></div>
+        <div class="flex-1 h-2 bg-blue-500 rounded-full cursor-pointer transition-opacity hover:opacity-80" onclick="irParaEtapa(6)"></div>
+      </div>
+    </div>
+
+    <!-- Etapas do formulário -->
+    <div id="formularioEtapas">
+      <div id="etapa1" class="form-step">
+  <h2 class="text-xl font-bold mb-4">Etapa 1 - Dados Pessoais</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input type="text" placeholder="Nome completo" class="border rounded p-2" />
+    <input type="text" placeholder="CPF" class="border rounded p-2" />
+    <input type="text" placeholder="RG" class="border rounded p-2" />
+    <input type="date" placeholder="Data de nascimento" class="border rounded p-2" />
+    <select class="border rounded p-2">
+      <option value="">Gênero</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+      <option value="Outro">Outro</option>
+    </select>
+    <select class="border rounded p-2">
+      <option value="">Estado civil</option>
+      <option value="Solteiro(a)">Solteiro(a)</option>
+      <option value="Casado(a)">Casado(a)</option>
+      <option value="Divorciado(a)">Divorciado(a)</option>
+      <option value="Viúvo(a)">Viúvo(a)</option>
+    </select>
+    <select class="border rounded p-2">
+      <option value="">Raça/Cor</option>
+      <option value="Branca">Branca</option>
+      <option value="Preta">Preta</option>
+      <option value="Parda">Parda</option>
+      <option value="Amarela">Amarela</option>
+      <option value="Indígena">Indígena</option>
+    </select>
+    <input type="text" placeholder="Município de nascimento" class="border rounded p-2" />
+    <input type="text" placeholder="Estado de nascimento" class="border rounded p-2" />
+    <input type="text" placeholder="Nacionalidade / País" class="border rounded p-2" />
+    <input type="text" placeholder="Nome da mãe" class="border rounded p-2" />
+    <input type="text" placeholder="Nome do pai" class="border rounded p-2" />
+    <input type="text" placeholder="CEP" class="border rounded p-2" />
+    <input type="text" placeholder="Rua" class="border rounded p-2" />
+    <input type="text" placeholder="Número" class="border rounded p-2" />
+    <input type="text" placeholder="Complemento" class="border rounded p-2" />
+    <select class="border rounded p-2">
+      <option value="">Possui deficiência?</option>
+      <option value="Não">Não</option>
+      <option value="Sim">Sim</option>
+    </select>
+    <input type="text" placeholder="Se sim, qual?" class="border rounded p-2" />
+  </div>
+  <div class="flex justify-end mt-6">
+          <button onclick="irParaEtapa(2)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Próxima Etapa</button>
+        </div>
+      </div>
+
+      <div id="etapa2" class="form-step hidden">
+  <h2 class="text-xl font-bold mb-4">Etapa 2 - Dependentes</h2>
+  <label class="block mb-2">Número de dependentes</label>
+  <select id="qtdDependentes" class="border rounded p-2 mb-4">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <div id="camposDependentes" class="space-y-6"></div>
+  <div class="flex justify-between mt-6">
+    <button onclick="irParaEtapa(1)" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded">Voltar</button>
+    <button onclick="irParaEtapa(3)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Próxima Etapa</button>
+  </div>
+</div>
+
+<div id="etapa3" class="form-step hidden">
+  <h2 class="text-xl font-bold mb-4">Etapa 3 - Informações sobre o Cargo e Documentos Pessoais</h2>
+
+  <h3 class="text-lg font-semibold mt-4">3.1 - Informação sobre o cargo</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input type="text" placeholder="Salário Bruto (sem descontos)" class="border rounded p-2" />
+    <input type="text" placeholder="Cargo de Admissão" class="border rounded p-2" />
+  </div>
+
+  <h3 class="text-lg font-semibold mt-6">3.2 - Documentos Pessoais</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input type="text" placeholder="CTPS | Digital (vinculada ao CPF)" class="border rounded p-2" />
+    <input type="text" placeholder="PIS" class="border rounded p-2" />
+    <input type="text" placeholder="CPF" class="border rounded p-2" />
+  </div>
+
+  <h3 class="text-lg font-semibold mt-6">3.3 - Vale Transporte e Sindicato</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <select class="border rounded p-2">
+      <option value="">Utiliza Vale Transporte?</option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select>
+    <select class="border rounded p-2">
+      <option value="">Desconta VT?</option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select>
+    <select class="border rounded p-2">
+      <option value="">Desconta Sindicato? (Opção do Empregado)</option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select>
+    <input type="text" placeholder="Tipo de Vale Transporte" class="border rounded p-2" />
+    <input type="text" placeholder="Valor (Unitário por trecho)" class="border rounded p-2" />
+  </div>
+
+  <div class="flex justify-between mt-6">
+    <button onclick="irParaEtapa(2)" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded">Voltar</button>
+    <button onclick="irParaEtapa(4)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Próxima Etapa</button>
+  </div>
+</div>
+
+
+</div>
+
+<div id="etapa4" class="form-step hidden">
+  <h2 class="text-xl font-bold mb-4">Etapa 4 - Informação - Documentos Especiais <span class="text-sm font-normal text-gray-500">(Campo Não Obrigatório)</span></h2>
+
+  <h3 class="text-lg font-semibold mt-4">CNH | Cargo de Motorista</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input type="text" placeholder="CNH - Número" class="border rounded p-2" />
+    <input type="date" placeholder="Data" class="border rounded p-2" />
+    <input type="text" placeholder="Categoria" class="border rounded p-2" />
+    <input type="date" placeholder="Validade" class="border rounded p-2" />
+  </div>
+
+  <h3 class="text-lg font-semibold mt-6">RNE | Para Estrangeiros</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input type="date" placeholder="Validade" class="border rounded p-2" />
+  </div>
+
+  <h3 class="text-lg font-semibold mt-6">Conselho Regional</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input type="text" placeholder="Nome do Conselho Regional" class="border rounded p-2" />
+    <input type="text" placeholder="Número" class="border rounded p-2" />
+    <input type="date" placeholder="Emissão" class="border rounded p-2" />
+    <input type="date" placeholder="Vencimento" class="border rounded p-2" />
+  </div>
+
+  <div class="flex justify-between mt-6">
+          <button onclick="irParaEtapa(3)" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded">Voltar</button>
+          <button onclick="irParaEtapa(5)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Próxima Etapa</button>
+        </div>
+      </div>
+
+      <div id="etapa5" class="form-step hidden">
+  <h2 class="text-xl font-bold mb-4">Etapa 5 - Informação - Horário</h2>
+  <div class="space-y-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <label class="md:col-span-4 font-semibold">Segunda-feira <span class='text-sm text-gray-500'>(Entrada / Saída / Almoço / Repouso)</span></label>
+      <input type="time" placeholder="Entrada" class="border rounded p-2" />
+      <input type="time" placeholder="Saída" class="border rounded p-2" />
+      <input type="time" placeholder="Almoço" class="border rounded p-2" />
+      <input type="time" placeholder="Repouso às" class="border rounded p-2" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <label class="md:col-span-4 font-semibold">Terça-feira <span class='text-sm text-gray-500'>(Entrada / Saída / Almoço / Repouso)</span></label>
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <label class="md:col-span-4 font-semibold">Quarta-feira <span class='text-sm text-gray-500'>(Entrada / Saída / Almoço / Repouso)</span></label>
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <label class="md:col-span-4 font-semibold">Quinta-feira <span class='text-sm text-gray-500'>(Entrada / Saída / Almoço / Repouso)</span></label>
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <label class="md:col-span-4 font-semibold">Sexta-feira <span class='text-sm text-gray-500'>(Entrada / Saída / Almoço / Repouso)</span></label>
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <label class="md:col-span-4 font-semibold">Sábado <span class='text-sm text-gray-500'>(Entrada / Saída / Almoço / Repouso)</span></label>
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <label class="md:col-span-4 font-semibold">Domingo <span class='text-sm text-gray-500'>(Entrada / Saída / Almoço / Repouso)</span></label>
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+      <input type="time" class="border rounded p-2" />
+    </div>
+  </div>
+  <div class="flex justify-between mt-6">
+          <button onclick="irParaEtapa(4)" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded">Voltar</button>
+          <button onclick="irParaEtapa(6)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Próxima Etapa</button>
+        </div>
+      </div>
+
+      <div id="etapa6" class="form-step hidden">
+  <h2 class="text-xl font-bold mb-4">Etapa 6 - Envio de Documentos e Informações Finais</h2>
+  <label class="block text-sm font-medium text-gray-700">Observações Adicionais</label>
+  <textarea class="w-full border rounded p-2 mt-1 mb-4" rows="4" placeholder="Ex: Documentos faltantes, detalhes do contrato, etc."></textarea>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">E-mail para envio da ficha</label>
+      <input type="email" class="w-full border rounded p-2 mt-1" placeholder="nome@exemplo.com">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Telefone (WhatsApp)</label>
+      <input type="tel" class="w-full border rounded p-2 mt-1" placeholder="(11) 91234-5678">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Upload de RG (PDF, PNG ou JPEG)</label>
+      <input type="file" accept=".pdf, image/png, image/jpeg" class="w-full border rounded p-2 mt-1">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Upload de Exame Admissional (PDF, PNG ou JPEG)</label>
+      <input type="file" accept=".pdf, image/png, image/jpeg" class="w-full border rounded p-2 mt-1">
+    </div>
+  </div>
+
+  <div class="mt-6 p-4 bg-gray-50 border border-gray-200 rounded">
+    <p class="text-sm text-gray-800 font-semibold mb-2">Outras Informações Importantes!</p>
+    <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+      <li>O exame admissional deverá ser realizado antes do empregado iniciar no trabalho.</li>
+      <li><strong>Estágio:</strong> Enviar cópia de contrato de estágio + dados da apólice de seguro de vida.</li>
+    </ul>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+  <div>
+    <label class="block text-sm font-medium text-gray-700">Telegram (usuário ou link)</label>
+    <input type="text" class="w-full border rounded p-2 mt-1" placeholder="@usuario ou link do perfil">
+  </div>
+</div>
+
+<div class="mt-8">
+  <h3 class="text-lg font-semibold mb-2">Visualização do PDF (prévia)</h3>
+  <div class="border border-dashed border-gray-300 bg-gray-50 rounded p-4 text-sm text-gray-600 italic">
+    Pré-visualização do conteúdo preenchido será exibida aqui para conferência antes do envio final.
+  </div>
+</div>
+
+<div class="flex justify-between mt-8">
+  <button onclick="irParaEtapa(5)" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded">Voltar</button>
+  <button onclick="enviarParaMake()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded">Finalizar e Enviar</button>
+</div>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="text-center text-gray-500 text-sm mt-10">
+      Powered by PWER IO
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function irParaEtapa(numero) {
+      const etapas = document.querySelectorAll('.form-step');
+      etapas.forEach(etapa => etapa.classList.add('hidden'));
+      const atual = document.getElementById('etapa' + numero);
+      if (atual) atual.classList.remove('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      irParaEtapa(1);
+    });
+  </script>
+<script>
+  document.getElementById('qtdDependentes').addEventListener('change', function () {
+    const container = document.getElementById('camposDependentes');
+    container.innerHTML = '';
+    const qtd = parseInt(this.value);
+    for (let i = 1; i <= qtd; i++) {
+      const bloco = document.createElement('div');
+      bloco.classList.add('grid', 'grid-cols-1', 'md:grid-cols-2', 'gap-4');
+      bloco.innerHTML = `
+        <input type="text" placeholder="Nome do dependente ${i}" class="border rounded p-2" />
+        <input type="text" placeholder="CPF" class="border rounded p-2" />
+        <input type="date" placeholder="Data de nascimento" class="border rounded p-2" />
+        <select class="border rounded p-2">
+          <option value="">Grau de parentesco</option>
+          <option value="Filho(a)">Filho(a)</option>
+          <option value="Enteado(a)">Enteado(a)</option>
+          <option value="Cônjuge">Cônjuge</option>
+          <option value="Pai/Mãe">Pai/Mãe</option>
+          <option value="Outro">Outro</option>
+        </select>`;
+      container.appendChild(bloco);
+    }
+  });
+function enviarParaMake() {
+  // Captura e estrutura os dados do formulário (exemplo simplificado)
+  const dados = {
+    nome: document.querySelector('input[placeholder="Nome completo"]').value,
+    cpf: document.querySelector('input[placeholder="CPF"]').value,
+    email: document.querySelector('input[type="email"]').value,
+    telefone: document.querySelector('input[type="tel"]').value,
+    telegram: document.querySelector('input[placeholder*="@usuario"]').value,
+  };
+
+  fetch('https://hook.us2.make.com/p1m12emrd99s4300e42vevym1rlskahv', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dados)
+  })
+  .then(res => alert('Formulário enviado com sucesso!'))
+  .catch(err => alert('Erro ao enviar formulário. Verifique e tente novamente.'));
+}
+</script>
+</body>
+</html>
